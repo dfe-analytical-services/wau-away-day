@@ -1,0 +1,7 @@
+Be-Oh-lia, a multinational waste and recycling management firm, are looking to expand their operations to England. 
+They have commissioned the team to investigate the following: 
+
+- report on waste and recycling rates in different local authorities, to identify potential sites for pilot expansion,
+- data quality - identifying any big shifts that are not explainable (e.g. increase in landfill tonnages over the years with no obvious reason why),
+- postcode outward code mapping to identify potential correlates (e.g. population, socio-economic groupings, income),
+- Identify recommendations for additional data required.

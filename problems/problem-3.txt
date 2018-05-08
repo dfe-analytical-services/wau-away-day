@@ -1,0 +1,7 @@
+Experts in the field of all things proper, Australian etiquette-coaching company DeeBret’s have been asked by a local magazine 
+to write an article ‘DeeBret’s Guide to Pets’. What pets are in vogue? What should you (and more importantly should you not) 
+name your pet? When adopting a Labrador, should one opt for Golden or Chocolate?
+
+The research team have obtained a list of registered cat and dog names from the Sunshine Coast Council. 
+It is your task to analyse this dataset and summarize your findings so that the writing team can consider 
+what to include in the dogs & cats chapter of their Guide to Pets.

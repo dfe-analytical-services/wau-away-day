@@ -1,0 +1,9 @@
+Australia’s National Association of Veterinary Administrators (ANAVA) suffered some bad press recently, 
+after two Jack Russell’s named Jack were patients at the same veterinary practice on the same weekend. 
+In the confusion, the wrong Jack had his hip replaced.
+
+In response to the incident, ANAVA would like to investigate the prevalence of common pet names to understand 
+the risk of such a mistake occurring again. They have obtained a list of registered dog and cat names from the Sunshine Coast Council.
+It is your task to analyse this dataset and summarize your findings to report back to the Association.
+
+
