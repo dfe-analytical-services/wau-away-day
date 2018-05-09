@@ -86,6 +86,16 @@ hist(jacks$Age, col = "pink")
 
 ```
 
+### Jacks Gender
+
+```{r}
+count_gender <- table(jacks$Gender) 
+
+hist(count_gender, col = "Blue") 
+
+```
+
+
 Column {data-width=350}
 -----------------------------------------------------------------------
 
