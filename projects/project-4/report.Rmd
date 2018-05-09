@@ -1,22 +1,98 @@
 ---
-title: "DfE Analysis Markdown Template"
+title: "Dogs Named Jack"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-# It is recommended that you load in any scripts your require in the markdown here. E.g:
-# library(ggplot2)
-
-# Similarly you can load in any R Scripts required in your markdown here. E.g:
-# source("R/script_name.R")
+library(flexdashboard)
+library(leaflet)
+source("R/data_preparation.R")
 ```
 
-## Analysis
+Wheres Jack?
+=======================================================================
 
-This is an example commentary followed by an output from an r code chunk.
+Column {data-width=650}
+-----------------------------------------------------------------------
 
-```{r, echo = FALSE}
-plot(mtcars)
+### Map
+
+```{r}
+
+jacks <- registered_animals %>%
+  filter(SpecificBreed == 'JACKRUSSL', Name == 'Jack')
+
+jacks_by_region <- jacks %>%
+  group_by(Locality) %>%
+  count()
+
+states@data <- left_join(states@data, jacks_by_region, by = c("SSC_NAME16" = "Locality"))
+
+  # Create binned colour paletter
+  at <- seq(0, 5, 1)
+  cb <- colorBin(palette = "YlOrRd", bins = at, domain = at)
+
+leaflet(states) %>%
+  addTiles(urlTemplate = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>% 
+  addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
+               opacity = 1.0, fillOpacity = 0.5,
+               fillColor = ~cb(n),
+               highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                   bringToFront = TRUE))
+
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Count
+
+```{r}
+
+jacks %>%
+  group_by(Locality) %>%
+  count() %>%
+  arrange(-n) %>%
+  knitr::kable()
+
+```
+
+### Characteristics Match
+
+```{r}
+
+jacks %>%
+  group_by(Locality, SpecificBreed, `De-sexed`, Gender) %>%
+  count() %>%
+  arrange(-n) %>%
+  knitr::kable()
+
+```
+
+Types of Jack
+=======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Distribution of Age
+
+```{r}
+
+hist(jacks$Age, col = "pink") 
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Table
+
+```{r}
+
+knitr::kable(jacks)
+
+```
