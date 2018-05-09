@@ -10,14 +10,15 @@ geography_lookup <- read_csv("Data/geography_lookup.csv")
 
 registered_animals <- read_csv("Data/registered_animals.csv") %>%
   na.omit() %>%
-  mutate(AnimalType = ifelse(AnimalType == 'D', 'Dog', AnimalType)) %>%
-  filter(Age <= 20)
+  mutate(
+    Locality = tolower(Locality),
+    AnimalType = ifelse(AnimalType == 'D', 'Dog', AnimalType)
+    ) %>%
+  filter(Age <= 20) 
 
 # Shape file
 
 states <- readOGR("Data/SSC_2016_QSLD")
 
-jacks <- registered_animals %>%
-  filter(SpecificBreed %in% c('JACKRUSSL', 'JACKRUSSLX'))
-
-         
+states@data <- states@data %>%
+  mutate(SSC_NAME16 = tolower(SSC_NAME16))
