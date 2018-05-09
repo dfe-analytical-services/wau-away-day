@@ -25,12 +25,12 @@ The below map shows the most popular dog breed in each area:
 dog_breed
 ```
 
-##So i'll get a staffy!! what have people names them?
+##So i'll get a staffy!! what have people named them?
 
 The most popular name and breed combinations are:
 ```{r breedname, warning=F,error=F,echo=F,message=F}
 library(data.table)
-DT::datatable(Dogs_name_breed)
+DT::datatable(Dogs_name_breed %>% select(-value))
 
 ```
 
@@ -38,9 +38,16 @@ DT::datatable(Dogs_name_breed)
 
 There are `r gold` Golden Labs and `r choc` Chocolate Labs so you should probably get a Golden Lab. 
 
+##What are the most popular names for dogs?
+
+![](dog_name_wordcloud.png)
+
+##What are the most popular names for cats?
+
+![](cat_name_wordcloud.png)
+
 ##Where are all the Bellas??
 
 ```{r map3, warning=F,error=F,echo=F}
 dog_name
 ```
-
